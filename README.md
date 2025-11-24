@@ -27,3 +27,5 @@ prtest
 テスト・テストテスト
 
 adsalkjflsakjfdkljaskldjflajsdlkjlasdf
+
+あdshfｋじゃｈｄｋｆｈかｓｄｆはｓｋｄｆｈか
