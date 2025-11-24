@@ -5,6 +5,12 @@
 - {{マージ先ブランチ}}に関する指定がない場合は、どのブランチに対してPullRequestを作成するか必ず聞き返してください。
 - `git diff origin/{{マージ先ブランチ}}...HEAD | cat` でマージ先ブランチとの差分を確認
 
+### 対話的対応
+#### ラベルの選択
+ラベルが指定されていない場合は必ず以下のラベルから選択させる
+1. priority: P0 - Critical
+2. priority: P1 - High
+
 ### Pull Request 作成とブラウザでの表示
 - 以下のコマンドで pull request を作成し、自動的にブラウザで開く
 - PR タイトルおよび PR テンプレートはマージ先との差分をもとに適切な内容にする
@@ -13,13 +19,13 @@
 
   --- bash
   # PR本文を一時ファイルに保存
-  cat > pr_body.txt << 'EOL'
+  cat > .temp/pr_body.txt << 'EOL'
   {{PRテンプレートの内容}}
   EOL
 
   # PRの作成
   git push origin HEAD && \
-  gh pr create --draft --title "{{PRタイトル}}" --body-file pr_body.txt && \
+  gh pr create --draft --title "{{PRタイトル}}" --body-file pr_body.txt && -l {ラベル}\
   gh pr view --web
   ---
 
@@ -27,4 +33,4 @@
 - 必要な情報を漏れなく記載
 
 #### PRテンプレート
-@pull-request-template.mdc からテンプレート内容を取得すること
+@pull-request-template.md からテンプレート内容を取得すること
